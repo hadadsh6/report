@@ -1,7 +1,11 @@
 from Report import Report
 from config import *
 class SiReport(Report):
+
+    needed_columns = [INVOICE, ORDER, ROW_ON_ORDER, AMOUNT]
     def __init__(self, df_to_create_from = None, file_path: str = None):
+        if df_to_create_from is None and file_path is None:
+            file_path = input('Please enter invoices file path: \n(Example: C:\\Users\\USER\\Downloads\\invoices.xlsx)')
         super().__init__('SI',df_to_create_from=df_to_create_from, file_path=file_path)
 
     def get_order_info(self, order_num: str):
