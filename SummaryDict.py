@@ -55,7 +55,7 @@ class SummaryDict(dict):
         :param invoices:
         :return:
         """
-        self.order = input("Please enter an order number: \n(Example: SO20000218)")
+        self.order = input("Please enter an order number: (Example: SO20000218)\n>>")
         if self.order not in list(orders[ORDER]):
             raise IOError(f"Order {self.order} isn't on your orders excel")
         order = orders.get_order_info(self.order)
@@ -81,12 +81,15 @@ class SummaryDict(dict):
         :return:
         """
         order_df = pd.DataFrame(self)
-        order_df.to_excel(SummaryDict.get_path_to_put_results_in())
+        results_path = SummaryDict.get_path_to_put_results_in()
+        order_df.to_excel(results_path)
+        print(f"Successfully created results summary on: {results_path}")
 
     @staticmethod
     def get_path_to_put_results_in() -> None:
         folder_path = input(
-            "Please enter path to put summary excel on:\n (Example: C:\\Users\\USER\\Documents)")
+            "Please enter path to put summary excel on: (Example: C:\\Users\\USER\\Documents) \n>>")
+        folder_path = folder_path.strip('"')
         folder_path = Path(folder_path)
         if not folder_path.exists():
             raise IOError("Folder doesn't exist!")

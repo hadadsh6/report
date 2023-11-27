@@ -14,6 +14,7 @@ class Report(DataFrame):
             self.source = file_path
             self.report_type = report_type
         elif file_path is not None:
+            file_path = file_path.strip('"')
             file_path = Path(file_path)
             if not file_path.exists():
                 raise FileNotFoundError("couldn't find the specified path!")
