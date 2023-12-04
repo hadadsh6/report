@@ -1,0 +1,7 @@
+{
+  "Name": "Unmatched_transactions",
+  "Hebrew_Name": "תנועות לא מתואמות",
+  "Columns": ["חשבון", "תאור", "מטבע החשבון", "תאריך ערך", "תאריך למאזן", "תנועת היומן", "סכום חובה", "סכום זכות", "סוג תנועה",
+    "אסמכתא1", "אסמכתא2", "פרטים", "הזמנה"],
+  "Prompt": "Please enter תנועות לא מתואמות file path: (Example: C:\\\\Users\\\\USER\\\\Downloads\\\\UnmatchedTransactions.xlsx)\\n>>"
+}

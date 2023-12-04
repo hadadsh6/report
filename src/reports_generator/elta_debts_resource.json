@@ -1,0 +1,6 @@
+{
+  "Name": "Elta_debts",
+  "Hebrew_Name": "חובות אלתא",
+  "Columns": ["חשבונית", "תאור פרויקט-שורה", "תאור מוצר משתנה", "סוכן"],
+  "Prompt": "Please enter חובות אלתא file path: (Example: C:\\\\Users\\\\USER\\\\Downloads\\\\UnmatchedTransactions.xlsx)\\n>>"
+}

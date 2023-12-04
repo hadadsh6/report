@@ -1,4 +1,4 @@
-from config import *
+from src.reports_generator.config import *
 from pathlib import Path
 import time
 import pandas as pd
@@ -8,6 +8,8 @@ from ShReport import ShReport
 from SiReport import SiReport
 
 from typing import Tuple
+
+
 class SummaryDict(dict):
     def __init__(self):
         """
@@ -17,6 +19,7 @@ class SummaryDict(dict):
         for key in SUMMARY_DICT_FIELDS_BY_ORDER:
             self.setdefault(key, [])
         self.order = None
+
     def append_row(self, row_i: int, row: DataFrame, shipments_of_row: DataFrame, invoices_of_row: DataFrame) -> None:
         """
         append the information of to the dictionary
@@ -46,7 +49,7 @@ class SummaryDict(dict):
         self[SENT_BUT_NOT_BILLED_PRICE].append(
             max(0, shipments_of_row[AMOUNT].sum() - invoices_of_row[AMOUNT].sum()) * row[PRICE].array[0])
 
-    def get_orders_dataframes(self, orders: SoReport, shipments: ShReport, invoices: SiReport) ->\
+    def get_orders_dataframes(self, orders: SoReport, shipments: ShReport, invoices: SiReport) -> \
             Tuple[SoReport, ShReport, SiReport]:
         """
 
@@ -62,7 +65,9 @@ class SummaryDict(dict):
         shipments_of_order = shipments.get_order_info(self.order)
         invoices_of_order = invoices.get_order_info(self.order)
         return order, shipments_of_order, invoices_of_order
-    def create_summary_report(self) -> None:
+
+    def create_summary_report(self, si_report_path: str = None, sh_report_path: str = None,
+                              so_report_path: str = None) -> None:
         """
 
         """
@@ -75,6 +80,7 @@ class SummaryDict(dict):
             invoices_of_row = invoices_of_order[invoices_of_order[ROW_ON_ORDER] == row_i + 1]
             self.append_row(row_i, row, shipments_of_row, invoices_of_row)
         self.create_excel_of_summary_dict()
+
     def create_excel_of_summary_dict(self) -> None:
         """
 
