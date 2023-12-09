@@ -49,6 +49,6 @@ class Report(DataFrame):
         return True
 
     def get_order_info(self, key_str: str):
-        if not key_str in list(self[self.KEY]):
+        if not key_str in list(self[config.ORDER]):
             print(f"Order number doesn't exist on {self.source} table")
-        return self.__class__(df_to_create_from=self[self[self.KEY] == key_str], file_path=self.source)
+        return self.__class__(df_to_create_from=self[self[config.ORDER] == key_str], file_path=self.source)

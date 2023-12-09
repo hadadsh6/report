@@ -11,12 +11,13 @@ from typing import Tuple
 
 
 class SummaryDict(dict):
+    summary_dict_fields = SUMMARY_DICT_FIELDS_BY_ORDER
     def __init__(self):
         """
         Initializes the summary dictionary
         """
         super().__init__()
-        for key in SUMMARY_DICT_FIELDS_BY_ORDER:
+        for key in self.summary_dict_fields:
             self.setdefault(key, [])
         self.order = None
 
