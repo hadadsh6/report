@@ -24,5 +24,5 @@ RESOURCE_MUST_HAVE = ["Name", "Hebrew_Name", "Columns", "Prompt"]
 SUMMARY_DICT_FIELDS_BY_ORDER = [ORDER, PART_NUMBER, PART_DESCRIPTION, PROJECT, PROJECT_DESCRIPTION, ROW_ON_ORDER, AMOUNT, PRICE, SHIPMENT_CERTIFICATE,
                                 SENT, INVOICES, BILLED, SENT_BUT_NOT_BILLED, SENT_BUT_NOT_BILLED_PRICE,
                                 AMOUNT_LEFT_ON_ORDER, AMOUNT_LEFT_ON_ORDER_PRICE]
-SUPPORTED_REPORT_TYPES = ['SH', 'SI', 'SO', 'UT', 'SUMMARY', 'Elta_debts', 'Unmatched_transactions']
+SUPPORTED_REPORT_TYPES = ['SH', 'SI', 'SO', 'UT', 'SUMMARY', 'Elta_debts', 'Unmatched_transactions', 'Transactions_details', 'Orders', 'Shipment_certificates', 'Invoices', 'Suppliers_site']
 pathes = [r"C:\Users\USER\Downloads\test_options\certificates.xlsx", r"C:\Users\USER\Downloads\test_options\invoices.xlsx", r"C:\Users\USER\Downloads\test_options\orders.xlsx"]

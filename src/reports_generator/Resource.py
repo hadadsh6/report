@@ -2,9 +2,12 @@ from src.reports_generator import Report, config
 from pathlib import Path
 import json
 class Resource(Report):
-    def __init__(self, resource_path: str = None, file_path: str = None):
+    def __init__(self, resource_path: Path = None, file_path: Path = None):
+        print(resource_path)
         if resource_path is None:
             raise IOError("What type of resource do you want?")
+        if not resource_path.exists():
+            raise FileNotFoundError(f"couldn't find {resource_path}")
         resource_path = Path(resource_path)
         with resource_path.open('r', encoding='utf-8') as f:
             resource_struct = json.loads(f.read())

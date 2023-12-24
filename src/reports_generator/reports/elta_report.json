@@ -1,8 +1,47 @@
 {
   "Name": "elta_report",
-  "Resources": [
-    "unmatched_transaction_resource.json",
-    "elta_debts_resource.json"
+  "Resources": {
+    "unmatched_transactions": "C:\\Users\\USER\\Documents\\Elta_Reports\\תנועות לא מותאמות-28.xlsx",
+    "elta_debts": "C:\\Users\\USER\\Documents\\Elta_Reports\\חובות אלתא.xlsx",
+    "transactions_details": "C:\\Users\\USER\\Documents\\Elta_Reports\\פירוט עסקאות רמת חשבונית  (36).xlsx",
+    "suppliers_site": "C:\\Users\\USER\\Documents\\Elta_Reports\\Suppliers_Site (61).xlsx"
+  },
+  "PreActions": [
+    {
+      "Name": "remove_chars",
+      "Args": {
+        "resources": [
+          "Suppliers_site"
+        ],
+        "chars": [
+          " ",
+          " "
+        ]
+      }
+    },
+    {
+      "Name": "fix_dates",
+      "Args": {
+        "resources": [
+          "Suppliers_site"
+        ],
+        "columns": [
+          "ת. נדרש לתשלום"
+        ]
+      }
+    },
+    {
+      "Name": "fix_dates",
+      "Args": {
+        "resources": [
+          "Unmatched_transactions"
+        ],
+        "columns": [
+          "תאריך ערך",
+          "תאריך למאזן"
+        ]
+      }
+    }
   ],
   "Actions": [
     {
@@ -52,6 +91,29 @@
           ]
         },
         "target": {
+          "resource": "Transactions_details",
+          "keys": [
+            "מספר חשבונית"
+          ],
+          "columns": [
+            "*יתרה שטרם נפרעה"
+          ]
+        },
+        "tag": [
+          "יתרה שטרם נפרעה"
+        ]
+      }
+    },
+    {
+      "Name": "map",
+      "Args": {
+        "key": {
+          "resource": "Unmatched_transactions",
+          "columns": [
+            "אסמכתא1"
+          ]
+        },
+        "target": {
           "resource": "Elta_debts",
           "keys": [
             "חשבונית"
@@ -66,6 +128,31 @@
           "תאור פרויקט-שורה",
           "תאור מוצר משתנה",
           "שם סוכן"
+        ]
+      }
+    },
+    {
+      "Name": "map",
+      "Args": {
+        "key": {
+          "resource": "Unmatched_transactions",
+          "columns": [
+            "אסמכתא1"
+          ]
+        },
+        "target": {
+          "resource": "Suppliers_site",
+          "keys": [
+            "חשבונית ספק"
+          ],
+          "columns": [
+            "סטטוס",
+            "ת. נדרש לתשלום"
+          ]
+        },
+        "tag": [
+          "סטטוס",
+          "תאריך תשלום צפוי"
         ]
       }
     }

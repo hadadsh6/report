@@ -1,0 +1,6 @@
+{
+  "Name": "Orders",
+  "Hebrew_Name": "הזמנות",
+  "Columns": ["הזמנה", "מק\"ט", "תאור מוצר", "פרויקט", "תאור פרויקט", "כמות", "מחיר בתעודה ש\"ח"],
+  "Prompt": "Please enter orders file path: (Example: C:\\Users\\USER\\Downloads\\orders.xlsx)\n>>"
+}

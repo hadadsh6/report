@@ -1,5 +1,3 @@
-
-
 class Action:
 
     def run(self, *args, **kwargs):

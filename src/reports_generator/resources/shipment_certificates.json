@@ -1,0 +1,6 @@
+{
+  "Name": "Shipment_certificates",
+  "Hebrew_Name": "תעודות משלוח",
+  "Columns": ["תעודה",  "שורה", "הזמנה", "כמות"],
+  "Prompt": "Please enter shipment certificates (תעודות משלוח) file path: (Example: C:\\Users\\USER\\shipment_certificates.xlsx)\n>>"
+}

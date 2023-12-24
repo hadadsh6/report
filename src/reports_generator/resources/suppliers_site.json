@@ -1,0 +1,10 @@
+{
+  "Name": "Suppliers_site",
+  "Hebrew_Name": "אתר הספק",
+  "Columns": [
+    "   סטטוס   ",
+    "  ת. נדרש לתשלום    ",
+    "   חשבונית ספק   "
+  ],
+  "Prompt": "Please enter suplliers_site file path: (Example: C:\\\\Users\\\\USER\\\\Downloads\\\\UnmatchedTransactions.xlsx)\\n>>"
+}

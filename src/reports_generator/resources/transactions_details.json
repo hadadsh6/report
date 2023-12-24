@@ -1,0 +1,9 @@
+{
+  "Name": "Transactions_details",
+  "Hebrew_Name": "פירוט עסקאות רמת חשבונית",
+  "Columns": [
+    "*יתרה שטרם נפרעה",
+    "מספר חשבונית"
+  ],
+  "Prompt": "Please enter פירוט עסקאות רמת חשבונית  (36) file path: (Example: C:\\\\Users\\\\USER\\\\Downloads\\\\UnmatchedTransactions.xlsx)\\n>>"
+}

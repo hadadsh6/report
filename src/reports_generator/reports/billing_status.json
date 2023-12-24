@@ -1,0 +1,160 @@
+{
+  "Name": "billing_status",
+  "Resources": {
+    "orders": "C:\\Users\\USER\\pythonProject\\Order_status_report\\tests\\reports_generator_pkg\\test_options\\orders.xlsx",
+    "shipment_certificates": "C:\\Users\\USER\\pythonProject\\Order_status_report\\tests\\reports_generator_pkg\\test_options\\certificates.xlsx",
+    "invoices": "C:\\Users\\USER\\pythonProject\\Order_status_report\\tests\\reports_generator_pkg\\test_options\\invoices.xlsx"
+  },
+  "PreActions": [
+    {
+      "Name": "filter",
+      "Args": {
+        "resources": [
+          "Orders",
+          "Shipment_certificates",
+          "Invoices"
+        ],
+        "keys": [
+          "הזמנה",
+          "הזמנה",
+          "הזמנה"
+        ],
+        "prompt": "Please enter an order number: (Example: SO20000218)\n>>"
+      }
+    },
+    {
+      "Name": "index",
+      "Args": {
+        "resources": [
+          "Orders"
+        ],
+        "tag": [
+          "שורה בהזמנה"
+        ]
+      }
+    }
+  ],
+  "Actions": [
+    {
+      "Name": "take",
+      "Args": {
+        "resource": "Orders",
+        "fields": [
+          "הזמנה",
+          "מק\"ט",
+          "תאור מוצר",
+          "פרויקט",
+          "תאור פרויקט",
+          "שורה בהזמנה",
+          "כמות",
+          "מחיר בתעודה ש\"ח"
+        ],
+        "tag": [
+          "הזמנה",
+          "מק\"ט",
+          "תאור מוצר",
+          "פרויקט",
+          "תאור פרויקט",
+          "שורה בהזמנה",
+          "כמות",
+          "מחיר בתעודה בש\"ח"
+        ],
+        "where": []
+      }
+    },
+    {
+      "Name": "map",
+      "Args": {
+        "key": {
+          "resource": "Orders",
+          "columns": [
+            "שורה בהזמנה"
+          ]
+        },
+        "target": {
+          "resource": "Shipment_certificates",
+          "keys": [
+            "שורה"
+          ],
+          "columns": [
+            "תעודה"
+          ]
+        },
+        "tag": [
+          "תעודות"
+        ]
+      }
+    },
+    {
+      "Name": "map",
+      "Args": {
+        "key": {
+          "resource": "Orders",
+          "columns": [
+            "שורה בהזמנה"
+          ]
+        },
+        "target": {
+          "resource": "Shipment_certificates",
+          "keys": [
+            "שורה"
+          ],
+          "columns": [
+            "כמות"
+          ]
+        },
+        "tag": [
+          "נשלחו"
+        ],
+        "func": "sum"
+      }
+    },
+    {
+      "Name": "map",
+      "Args": {
+        "key": {
+          "resource": "Orders",
+          "columns": [
+            "שורה בהזמנה"
+          ]
+        },
+        "target": {
+          "resource": "Invoices",
+          "keys": [
+            "שורה בהזמנה"
+          ],
+          "columns": [
+            "חשבונית"
+          ]
+        },
+        "tag": [
+          "חשבוניות"
+        ]
+      }
+    },
+    {
+      "Name": "map",
+      "Args": {
+        "key": {
+          "resource": "Orders",
+          "columns": [
+            "שורה בהזמנה"
+          ]
+        },
+        "target": {
+          "resource": "Invoices",
+          "keys": [
+            "שורה בהזמנה"
+          ],
+          "columns": [
+            "כמות"
+          ]
+        },
+        "tag": [
+          "חויבו"
+        ],
+        "func": "sum"
+      }
+    }
+  ]
+}
